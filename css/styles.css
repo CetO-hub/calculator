@@ -17,6 +17,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   background-color: rgb(160, 230, 230);
+  box-shadow: 2px 2px 10px black;
 }
 
 .display {
