@@ -1,37 +1,61 @@
+let isNumber1Array = [];
+let isNumber2Array = [];
+let isOperator = [];
+
 function add(number1, number2) {
-  isOperator = 0;
+  console.log(isOperator);
   let isResult = +number1.join("") + +number2.join("");
   isNumber2Array = [];
+  if (isOperator.length > 1) {
+    isOperator.splice(0, 1);
+    isDisplay.innerText = isResult + " " + isOperator[0];
+    return (isNumber1Array = isResult.toString().split());
+  }
   isDisplay.innerText = isResult;
   return (isNumber1Array = isResult.toString().split());
 }
 
 function subtract(number1, number2) {
-  isOperator = 0;
+  console.log(isOperator);
   let isResult = +number1.join("") - +number2.join("");
   isNumber2Array = [];
+  if (isOperator.length > 1) {
+    isOperator.splice(0, 1);
+    isDisplay.innerText = isResult + " " + isOperator[0];
+    return (isNumber1Array = isResult.toString().split());
+  }
   isDisplay.innerText = isResult;
   return (isNumber1Array = isResult.toString().split());
 }
 
 function multiply(number1, number2) {
-  isOperator = 0;
+  console.log(isOperator);
   let isResult = +number1.join("") * +number2.join("");
   isNumber2Array = [];
+  if (isOperator.length > 1) {
+    isOperator.splice(0, 1);
+    isDisplay.innerText = isResult + " " + isOperator[0];
+    return (isNumber1Array = isResult.toString().split());
+  }
   isDisplay.innerText = isResult;
   return (isNumber1Array = isResult.toString().split());
 }
 
 function divide(number1, number2) {
-  isOperator = 0;
+  console.log(isOperator);
   let isResult = +number1.join("") / +number2.join("");
   isNumber2Array = [];
+  if (isOperator.length > 1) {
+    isOperator.splice(0, 1);
+    isDisplay.innerText = isResult + " " + isOperator[0];
+    return (isNumber1Array = isResult.toString().split());
+  }
   isDisplay.innerText = isResult;
   return (isNumber1Array = isResult.toString().split());
 }
 
 function operate() {
-  switch (isOperator) {
+  switch (isOperator[0]) {
     case "+":
       add(isNumber1Array, isNumber2Array);
       break;
@@ -48,12 +72,20 @@ function operate() {
 }
 
 function displayNumber(e) {
+  if (
+    e.target["className"] === "operator" &&
+    isOperator.length === 1 &&
+    isNumber2Array
+  ) {
+    isOperator.push(e.target["innerText"]);
+    return operate();
+  }
   if (e.target["className"] === "operator") {
-    isOperator = e.target["innerText"];
-    isDisplay.innerText = isOperator;
+    isOperator.push(e.target["innerText"]);
+    isDisplay.innerText = isOperator[0];
     return;
   }
-  if (!isOperator) {
+  if (!isOperator[0]) {
     if (
       isNumber1Array.find((element) => element === ".") !== undefined &&
       e.target["innerText"] === "."
@@ -61,10 +93,9 @@ function displayNumber(e) {
       return;
     isNumber1Array.push(e.target["innerText"]);
     isDisplay.innerText = isNumber1Array.join("");
-    console.log(isNumber1Array);
     return;
   }
-  if (isOperator) {
+  if (isOperator[0]) {
     if (
       isNumber2Array.find((element) => element === ".") !== undefined &&
       e.target["innerText"] === "."
@@ -72,7 +103,6 @@ function displayNumber(e) {
       return;
     isNumber2Array.push(e.target["innerText"]);
     isDisplay.innerText = isNumber2Array.join("");
-    console.log(isNumber2Array);
     return;
   }
 }
@@ -80,13 +110,9 @@ function displayNumber(e) {
 function clearNumber() {
   isNumber1Array = [];
   isNumber2Array = [];
-  isOperator = undefined;
+  isOperator = [];
   isDisplay.innerText = 0;
 }
-
-let isNumber1Array = [];
-let isNumber2Array = [];
-let isOperator;
 
 let isDisplay = document.querySelector(".display");
 let isClear = document.querySelector(".clear");
