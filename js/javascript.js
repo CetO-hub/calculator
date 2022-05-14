@@ -1,5 +1,5 @@
-function add(isNumber1Array, isNumber2Array) {
-  return console.log(isNumber1Array, isNumber2Array);
+function add(number1, number2) {
+  return (isDisplay.innerText = +number1.join("") + +number2.join(""));
 }
 
 function subtract(number1, number2) {
@@ -13,11 +13,10 @@ function multiply(number1, number2) {
 function divide(number1, number2) {
   return number1 / number2;
 }
-function operate(isOperator) {
-  switch (1) {
-    case 1:
+function operate() {
+  switch (isOperator) {
+    case "+":
       add(isNumber1Array, isNumber2Array);
-      console.log("Hey");
       break;
     case "-":
       subtract(isNumber1Array, isNumber2Array);
@@ -32,26 +31,28 @@ function operate(isOperator) {
 }
 
 function displayNumber(e) {
-  if (
-    (isNumber1Array.find((element) => element === ".") !== undefined &&
-      e.target["innerText"] === ".") ||
-    (isNumber2Array.find((element) => element === ".") !== undefined &&
-      e.target["innerText"] === ".")
-  ) {
-    return;
-  }
   if (e.target["className"] === "operator") {
     isOperator = e.target["innerText"];
     isDisplay.innerText = isOperator;
     return;
   }
   if (!isOperator) {
+    if (
+      isNumber1Array.find((element) => element === ".") !== undefined &&
+      e.target["innerText"] === "."
+    )
+      return;
     isNumber1Array.push(e.target["innerText"]);
     isDisplay.innerText = isNumber1Array.join("");
     console.log(isNumber1Array);
     return;
   }
   if (isOperator) {
+    if (
+      isNumber2Array.find((element) => element === ".") !== undefined &&
+      e.target["innerText"] === "."
+    )
+      return;
     isNumber2Array.push(e.target["innerText"]);
     isDisplay.innerText = isNumber2Array.join("");
     console.log(isNumber2Array);
