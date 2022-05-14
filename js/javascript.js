@@ -1,5 +1,9 @@
 function add(number1, number2) {
-  return (isDisplay.innerText = +number1.join("") + +number2.join(""));
+  isOperator = 0;
+  let isResult = +number1.join("") + +number2.join("");
+  isNumber2Array = [];
+  isDisplay.innerText = isResult;
+  return (isNumber1Array = isResult.toString().split());
 }
 
 function subtract(number1, number2) {
