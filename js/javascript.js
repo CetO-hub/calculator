@@ -3,54 +3,98 @@ let isNumber2Array = [];
 let isOperator = [];
 
 function add(number1, number2) {
-  console.log(isOperator);
   let isResult = +number1.join("") + +number2.join("");
   isNumber2Array = [];
   if (isOperator.length > 1) {
+    if (isResult.toString().length > 6) {
+      isDisplay.innerText = isResult.toFixed(2);
+      isOperator.splice(0, 1);
+      return (isNumber1Array = isResult.toString().split());
+    }
     isOperator.splice(0, 1);
     isDisplay.innerText = isResult + " " + isOperator[0];
     return (isNumber1Array = isResult.toString().split());
   }
+  if (isResult.toString().length > 6) {
+    isDisplay.innerText = isResult.toFixed(2);
+    isOperator.splice(0, 1);
+    return (isNumber1Array = isResult.toString().split());
+  }
   isDisplay.innerText = isResult;
+  isOperator.splice(0, 1);
   return (isNumber1Array = isResult.toString().split());
 }
 
 function subtract(number1, number2) {
-  console.log(isOperator);
   let isResult = +number1.join("") - +number2.join("");
   isNumber2Array = [];
   if (isOperator.length > 1) {
+    if (isResult.toString().length > 6) {
+      isDisplay.innerText = isResult.toFixed(2);
+      isOperator.splice(0, 1);
+      return (isNumber1Array = isResult.toString().split());
+    }
     isOperator.splice(0, 1);
     isDisplay.innerText = isResult + " " + isOperator[0];
     return (isNumber1Array = isResult.toString().split());
   }
+  if (isResult.toString().length > 6) {
+    isDisplay.innerText = isResult.toFixed(2);
+    isOperator.splice(0, 1);
+    return (isNumber1Array = isResult.toString().split());
+  }
   isDisplay.innerText = isResult;
+  isOperator.splice(0, 1);
   return (isNumber1Array = isResult.toString().split());
 }
 
 function multiply(number1, number2) {
-  console.log(isOperator);
   let isResult = +number1.join("") * +number2.join("");
   isNumber2Array = [];
   if (isOperator.length > 1) {
+    if (isResult.toString().length > 6) {
+      isDisplay.innerText = isResult.toFixed(2);
+      isOperator.splice(0, 1);
+      return (isNumber1Array = isResult.toString().split());
+    }
     isOperator.splice(0, 1);
     isDisplay.innerText = isResult + " " + isOperator[0];
     return (isNumber1Array = isResult.toString().split());
   }
+  if (isResult.toString().length > 6) {
+    isDisplay.innerText = isResult.toFixed(2);
+    isOperator.splice(0, 1);
+    return (isNumber1Array = isResult.toString().split());
+  }
   isDisplay.innerText = isResult;
+  isOperator.splice(0, 1);
   return (isNumber1Array = isResult.toString().split());
 }
 
 function divide(number1, number2) {
-  console.log(isOperator);
+  if (isNumber2Array && +number2.join("") === 0) {
+    isNumber2Array = [];
+    return (isDisplay.innerText = "No division by 0, choose other number!");
+  }
   let isResult = +number1.join("") / +number2.join("");
   isNumber2Array = [];
   if (isOperator.length > 1) {
+    if (isResult.toString().length > 6) {
+      isDisplay.innerText = isResult.toFixed(2);
+      isOperator.splice(0, 1);
+      return (isNumber1Array = isResult.toString().split());
+    }
     isOperator.splice(0, 1);
     isDisplay.innerText = isResult + " " + isOperator[0];
     return (isNumber1Array = isResult.toString().split());
   }
+  if (isResult.toString().length > 6) {
+    isDisplay.innerText = isResult.toFixed(2);
+    isOperator.splice(0, 1);
+    return (isNumber1Array = isResult.toString().split());
+  }
   isDisplay.innerText = isResult;
+  isOperator.splice(0, 1);
   return (isNumber1Array = isResult.toString().split());
 }
 
@@ -75,13 +119,14 @@ function displayNumber(e) {
   if (
     e.target["className"] === "operator" &&
     isOperator.length === 1 &&
-    isNumber2Array
+    isNumber2Array.length > 0
   ) {
     isOperator.push(e.target["innerText"]);
     return operate();
   }
   if (e.target["className"] === "operator") {
     isOperator.push(e.target["innerText"]);
+
     isDisplay.innerText = isOperator[0];
     return;
   }
