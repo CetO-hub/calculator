@@ -7,16 +7,29 @@ function add(number1, number2) {
 }
 
 function subtract(number1, number2) {
-  return number1 - number2;
+  isOperator = 0;
+  let isResult = +number1.join("") - +number2.join("");
+  isNumber2Array = [];
+  isDisplay.innerText = isResult;
+  return (isNumber1Array = isResult.toString().split());
 }
 
 function multiply(number1, number2) {
-  return number1 * number2;
+  isOperator = 0;
+  let isResult = +number1.join("") * +number2.join("");
+  isNumber2Array = [];
+  isDisplay.innerText = isResult;
+  return (isNumber1Array = isResult.toString().split());
 }
 
 function divide(number1, number2) {
-  return number1 / number2;
+  isOperator = 0;
+  let isResult = +number1.join("") / +number2.join("");
+  isNumber2Array = [];
+  isDisplay.innerText = isResult;
+  return (isNumber1Array = isResult.toString().split());
 }
+
 function operate() {
   switch (isOperator) {
     case "+":
